@@ -1,0 +1,91 @@
+<ion-content class="selesai-container">
+
+  <ng-container *ngIf="detailOrder; else loading">
+    
+    <!-- ✅ Konten utama jika data sudah siap -->
+    <div class="top-section">
+      <h2>Perjalanan telah selesai</h2>
+      <p class="subtitle">Terimakasih telah mengantar pelanggan sampai tujuan.</p>
+    </div>
+
+    <div class="section">
+      <h3 class="section-title">Ringkasan Perjalanan</h3>
+      <div class="section-line"></div>
+
+      <div class="info-row">
+        <ion-icon name="location-outline"></ion-icon>
+        <p>{{ detailOrder.lokasi_jemput }}</p>
+      </div>
+
+      <div class="info-row">
+        <ion-icon name="flag-outline"></ion-icon>
+        <p>{{ detailOrder.lokasi_tujuan }}</p>
+      </div>
+
+      <div class="info-row">
+        <ion-icon name="time-outline"></ion-icon>
+        <p>{{ detailOrder.waktu_selesai | date:'yyyy-MM-dd HH:mm:ss' }}</p>
+      </div>
+    </div>
+
+    <div class="section payment-section">
+      <h3 class="payment-title">Metode Pembayaran</h3>
+      <div class="section-line"></div>
+
+      <div class="payment-detail">
+        <div class="payment-row">
+          <span>Total</span>
+          <span class="amount">Rp. {{ detailOrder.tarif | number:'1.0-0' }}</span>
+        </div>
+
+        <div class="payment-row">
+          <span>Metode Payment</span>
+          <span class="method">Qris</span>
+        </div>
+
+        <div class="payment-row" *ngIf="detailOrder.bukti_pembayaran_url">
+          <span>Bukti Payment</span>
+        </div>
+
+        <img *ngIf="detailOrder.bukti_pembayaran_url"
+             [src]="detailOrder.bukti_pembayaran_url"
+             alt="Bukti Payment"
+             class="bukti-img" />
+      </div>
+    </div>
+
+    <!-- QRIS LOADING -->
+  
+    <div *ngIf="loadingQris" class="qris-loading-wrapper">
+      <ion-spinner name="dots"></ion-spinner>
+    </div>
+
+
+    <div class="section qris-section" *ngIf="qrisUrl && !loadingQris">
+      <h3 class="payment-title">QRIS Pembayaran</h3>
+      <div class="section-line"></div>
+
+      <p>Scan QR berikut untuk membayar:</p>
+      
+      <img *ngIf="qrisUrl"
+          [src]="'https://api.qrserver.com/v1/create-qr-code/?size=200x200&data=' + qrisUrl"
+          alt="QRIS" class="qris-img" />
+
+      <ion-text color="medium" class="qris-note">
+        <p>QR ini hanya berlaku untuk pesanan ini dan akan kadaluarsa setelah beberapa menit.</p>
+      </ion-text>
+    </div>
+
+    <!-- ✅ SIMPAN DI DALAM ng-container -->
+    <ion-button expand="block" class="home-button" (click)="goToHome()">Back to home</ion-button>
+
+  </ng-container>
+
+  <!-- 🔄 Spinner loading saat data belum siap -->
+  <ng-template #loading>
+    <div class="spinner-wrapper">
+      <ion-spinner name="dots"></ion-spinner>
+    </div>
+  </ng-template>
+
+</ion-content>

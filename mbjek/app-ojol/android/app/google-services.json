@@ -1,0 +1,49 @@
+{
+  "project_info": {
+    "project_number": "784431260540",
+    "firebase_url": "https://ojol-online-d9df1-default-rtdb.asia-southeast1.firebasedatabase.app",
+    "project_id": "ojol-online-d9df1",
+    "storage_bucket": "ojol-online-d9df1.firebasestorage.app"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784431260540:android:de31b2a8931c4cc701faf9",
+        "android_client_info": {
+          "package_name": "capacitor.cordova.android.plugins"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjlEWh1uRfFJE9tGFds7Ba4kEPOCKdn7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:784431260540:android:5645857e04b6590901faf9",
+        "android_client_info": {
+          "package_name": "com.mbjek.appojol"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDjlEWh1uRfFJE9tGFds7Ba4kEPOCKdn7E"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
